@@ -8,14 +8,23 @@ namespace Win_Tetris
 {
     class Grid
     {
+        //Variabeln
         int[,] field = new int[10, 22];
         int blockSize = 10;
 
+        //Properties
         public int[,] Field
         {
             get { return field; }
         }
 
+        public int BlockSize
+        {
+            get { return blockSize; }
+            set { if (value > 0) blockSize = value; }
+        }
+
+        //Methoden
         public void draw(Graphics gfx)
         {
             Pen pen = new Pen(Color.Black);
@@ -33,8 +42,7 @@ namespace Win_Tetris
                             break;
                     }
 
-                    gfx.DrawRectangle(pen, x * blockSize, y * blockSize, blockSize, blockSize);
-                    gfx.FillRectangle(pen.Brush, x * blockSize, y * blockSize, blockSize, blockSize);
+                    gfx.FillRectangle(pen.Brush, x * blockSize + 1, y * blockSize + 1, blockSize - 1, blockSize - 1);
                 }
             }
         }

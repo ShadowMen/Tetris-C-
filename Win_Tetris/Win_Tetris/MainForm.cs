@@ -24,5 +24,10 @@ namespace Win_Tetris
             game.update();
             game.draw(drawBox.CreateGraphics());
         }
+
+        private void drawBox_Resize(object sender, EventArgs e)
+        {
+            game.resize(drawBox.Width, drawBox.Height);
+        }
     }
 }

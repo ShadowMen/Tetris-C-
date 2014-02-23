@@ -62,6 +62,7 @@
             this.drawBox.Size = new System.Drawing.Size(286, 235);
             this.drawBox.TabIndex = 0;
             this.drawBox.TabStop = false;
+            this.drawBox.Resize += new System.EventHandler(this.drawBox_Resize);
             // 
             // toolBar
             // 
@@ -75,6 +76,7 @@
             // updateTimer
             // 
             this.updateTimer.Enabled = true;
+            this.updateTimer.Interval = 666;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
             // MainForm
@@ -84,7 +86,7 @@
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Controls.Add(this.Panel);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Tetris - by Nils";
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawBox)).EndInit();
