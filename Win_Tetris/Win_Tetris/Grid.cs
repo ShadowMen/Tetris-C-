@@ -78,7 +78,7 @@ namespace Win_Tetris
                     switch (flyingBlock.Blocks[y, x])
                     {
                         case 0:
-                            pen.Color = Color.LightGray;
+                            pen.Color = Color.Transparent;
                             break;
                         case 1:
                             pen.Color = Color.Blue;
@@ -105,6 +105,43 @@ namespace Win_Tetris
 
                     gfx.FillRectangle(pen.Brush, (x + flyingBlock.PositionX) * blockSize + 1, (y + flyingBlock.PositionY) * blockSize + 1, blockSize - 1, blockSize - 1);
                 }
+            }
+        }
+
+        public void insertBlock()
+        {
+            for (int y = 0; y < flyingBlock.Size; y++)
+            {
+                for (int x = 0; x < flyingBlock.Size; x++)
+                {
+                    if (flyingBlock.Blocks[y, x] != 0) field[y + flyingBlock.PositionY, x + flyingBlock.PositionX] = flyingBlock.Blocks[y, x];
+                }
+            }
+
+            Random rnd = new Random();
+            switch (rnd.Next(1, 8))
+            {
+                case 1:
+                    flyingBlock = new TBlock();
+                    break;
+                case 2:
+                    flyingBlock = new LBlock();
+                    break;
+                case 3:
+                    flyingBlock = new JBlock();
+                    break;
+                case 4:
+                    flyingBlock = new SBlock();
+                    break;
+                case 5:
+                    flyingBlock = new ZBlock();
+                    break;
+                case 6:
+                    flyingBlock = new OBlock();
+                    break;
+                case 7:
+                    flyingBlock = new IBlock();
+                    break;
             }
         }
     }
