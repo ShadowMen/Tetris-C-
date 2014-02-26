@@ -38,5 +38,26 @@ namespace Win_Tetris
                 }
             }
         }
+
+        public override void TurnRight()
+        {
+            int[,] oldBlock = new int[4, 4];
+
+            for (int y = 0; y < 4; y++)
+            {
+                for (int x = 0; x < 4; x++)
+                {
+                    oldBlock[y, x] = base.Blocks[y, x];
+                }
+            }
+
+            for (int y = 0; y < 4; y++)
+            {
+                for (int x = 0; x < 4; x++)
+                {
+                    base.Blocks[y, x] = oldBlock[x, 3 - y];
+                }
+            }
+        }
     }
 }
