@@ -10,7 +10,7 @@ namespace Win_Tetris
     {
         //Variabeln
         int[,] field = new int[22, 10];
-        Block flyingBlock = new TBlock();
+        Block flyingBlock = new IBlock();
         int blockSize = 10;
 
         //Properties
@@ -50,6 +50,21 @@ namespace Win_Tetris
                         case 2:
                             pen.Color = Color.Red;
                             break;
+                        case 3:
+                            pen.Color = Color.Green;
+                            break;
+                        case 4:
+                            pen.Color = Color.Yellow;
+                            break;
+                        case 5:
+                            pen.Color = Color.Orange;
+                            break;
+                        case 6:
+                            pen.Color = Color.Violet;
+                            break;
+                        case 7:
+                            pen.Color = Color.Gold;
+                            break;
                     }
 
                     gfx.FillRectangle(pen.Brush, x * blockSize + 1, y * blockSize + 1, blockSize - 1, blockSize - 1);
@@ -70,6 +85,21 @@ namespace Win_Tetris
                             break;
                         case 2:
                             pen.Color = Color.Red;
+                            break;
+                        case 3:
+                            pen.Color = Color.Green;
+                            break;
+                        case 4:
+                            pen.Color = Color.Yellow;
+                            break;
+                        case 5:
+                            pen.Color = Color.Orange;
+                            break;
+                        case 6:
+                            pen.Color = Color.Violet;
+                            break;
+                        case 7:
+                            pen.Color = Color.Gold;
                             break;
                     }
 
