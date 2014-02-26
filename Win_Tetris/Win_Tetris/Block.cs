@@ -8,10 +8,17 @@ namespace Win_Tetris
     class Block
     {
         //Variabeln
-        int[,] block = new int[4, 4];
+        int[,] block;
         int posX, posY;
+        int size = 0;
 
         //Properties
+        public int Size
+        {
+            get { return size; }
+            protected set { size = value; }
+        }
+
         public int PositionX
         {
             get { return posX; }
@@ -24,29 +31,29 @@ namespace Win_Tetris
             protected set { posY = value; }
         }
 
-        public int[,] Block
+        public int[,] Blocks
         {
             get { return block; }
             protected set { block = value; }
         }
 
         //Methoden
-        public void TurnLeft()
+        public virtual void TurnLeft()
         {
         }
 
-        public void TurnRight()
+        public virtual void TurnRight()
         {
         }
 
         public void MoveRight()
         {
-            posX++;
+            if(posX < 10 - size) posX++;
         }
 
         public void MoveLeft()
         {
-            posX--;
+            if(posX > 0) posX--;
         }
 
         public void MoveDown()
