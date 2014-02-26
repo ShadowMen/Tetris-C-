@@ -26,6 +26,7 @@ namespace Win_Tetris
         public void update()
         {
             if (!isRunnig) return;
+            tryGoDown();
         }
 
         public void handleInput(System.Windows.Forms.Keys key)
@@ -34,12 +35,15 @@ namespace Win_Tetris
             {
                 case System.Windows.Forms.Keys.Left:
                     grid.FlyingBlock.MoveLeft();
+                    if (Collision.isCollision(grid.FlyingBlock, grid.Field)) grid.FlyingBlock.MoveRight();
                     break;
                 case System.Windows.Forms.Keys.Right:
                     grid.FlyingBlock.MoveRight();
+                    if (Collision.isCollision(grid.FlyingBlock, grid.Field)) grid.FlyingBlock.MoveLeft();
                     break;
                 case System.Windows.Forms.Keys.A:
                     grid.FlyingBlock.TurnLeft();
+                    if (Collision.isCollision(grid.FlyingBlock, grid.Field)) grid.FlyingBlock.TurnRight();
                     break;
             }
         }
@@ -60,6 +64,16 @@ namespace Win_Tetris
         {
             gfx.Clear(Color.Gray);
             grid.draw(gfx);
+        }
+
+        public void tryGoDown()
+        {
+            grid.FlyingBlock.MoveDown();
+            if (Collision.isCollision(grid.FlyingBlock, grid.Field))
+            {
+                grid.FlyingBlock.MoveUp();
+                grid.insertBlock();
+            }
         }
     }
 }
