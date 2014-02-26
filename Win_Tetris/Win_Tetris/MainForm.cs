@@ -39,5 +39,10 @@ namespace Win_Tetris
             System.Diagnostics.Debug.WriteLine("Paint at {0}", DateTime.Now);
             game.draw(e.Graphics);
         }
+
+        private void barBtnStart_Click(object sender, EventArgs e)
+        {
+            game.run();
+        }
     }
 }

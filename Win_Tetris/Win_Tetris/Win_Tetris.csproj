@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="Collision.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="JBlock.cs" />
     <Compile Include="LBlock.cs" />
@@ -58,7 +59,7 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="Grid.cs" />
-    <Compile Include="OBLock.cs" />
+    <Compile Include="OBlock.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SBlock.cs" />

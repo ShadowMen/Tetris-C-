@@ -40,6 +40,7 @@
             // updateTimer
             // 
             this.updateTimer.Enabled = true;
+            this.updateTimer.Interval = 300;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
             // toolBar
@@ -60,6 +61,7 @@
             this.barBtnStart.Name = "barBtnStart";
             this.barBtnStart.Size = new System.Drawing.Size(35, 22);
             this.barBtnStart.Text = "Start";
+            this.barBtnStart.Click += new System.EventHandler(this.barBtnStart_Click);
             // 
             // drawBox
             // 
