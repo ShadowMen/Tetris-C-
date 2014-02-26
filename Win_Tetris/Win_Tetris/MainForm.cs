@@ -20,14 +20,24 @@ namespace Win_Tetris
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
-            game.handleInput();
             game.update();
-            game.draw(drawBox.CreateGraphics());
+            drawBox.Refresh();
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            game.handleInput(e.KeyCode);
         }
 
         private void drawBox_Resize(object sender, EventArgs e)
         {
             game.resize(drawBox.Width, drawBox.Height);
+        }
+
+        private void drawBox_Paint(object sender, PaintEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Paint at {0}", DateTime.Now);
+            game.draw(e.Graphics);
         }
     }
 }

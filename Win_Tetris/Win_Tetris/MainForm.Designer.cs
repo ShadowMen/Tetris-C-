@@ -29,77 +29,72 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Panel = new System.Windows.Forms.TableLayoutPanel();
-            this.drawBox = new System.Windows.Forms.PictureBox();
-            this.toolBar = new System.Windows.Forms.ToolStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.drawBox)).BeginInit();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.barBtnStart = new System.Windows.Forms.ToolStripButton();
+            this.drawBox = new System.Windows.Forms.Panel();
+            this.toolBar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Panel
-            // 
-            this.Panel.ColumnCount = 2;
-            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.Panel.Controls.Add(this.drawBox, 0, 1);
-            this.Panel.Controls.Add(this.toolBar, 0, 0);
-            this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel.Location = new System.Drawing.Point(0, 0);
-            this.Panel.Name = "Panel";
-            this.Panel.RowCount = 2;
-            this.Panel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Panel.Size = new System.Drawing.Size(292, 266);
-            this.Panel.TabIndex = 0;
-            // 
-            // drawBox
-            // 
-            this.Panel.SetColumnSpan(this.drawBox, 2);
-            this.drawBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.drawBox.Location = new System.Drawing.Point(3, 28);
-            this.drawBox.Name = "drawBox";
-            this.drawBox.Size = new System.Drawing.Size(286, 235);
-            this.drawBox.TabIndex = 0;
-            this.drawBox.TabStop = false;
-            this.drawBox.Resize += new System.EventHandler(this.drawBox_Resize);
-            // 
-            // toolBar
-            // 
-            this.Panel.SetColumnSpan(this.toolBar, 2);
-            this.toolBar.Location = new System.Drawing.Point(0, 0);
-            this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(292, 25);
-            this.toolBar.TabIndex = 1;
-            this.toolBar.Text = "toolStrip1";
             // 
             // updateTimer
             // 
             this.updateTimer.Enabled = true;
-            this.updateTimer.Interval = 666;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
+            // 
+            // toolBar
+            // 
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.barBtnStart});
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(292, 25);
+            this.toolBar.TabIndex = 3;
+            this.toolBar.Text = "toolStrip1";
+            // 
+            // barBtnStart
+            // 
+            this.barBtnStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.barBtnStart.Image = ((System.Drawing.Image)(resources.GetObject("barBtnStart.Image")));
+            this.barBtnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.barBtnStart.Name = "barBtnStart";
+            this.barBtnStart.Size = new System.Drawing.Size(35, 22);
+            this.barBtnStart.Text = "Start";
+            // 
+            // drawBox
+            // 
+            this.drawBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawBox.Location = new System.Drawing.Point(0, 25);
+            this.drawBox.Name = "drawBox";
+            this.drawBox.Size = new System.Drawing.Size(292, 241);
+            this.drawBox.TabIndex = 4;
+            this.drawBox.Paint += new System.Windows.Forms.PaintEventHandler(this.drawBox_Paint);
+            this.drawBox.Resize += new System.EventHandler(this.drawBox_Resize);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 266);
-            this.Controls.Add(this.Panel);
+            this.Controls.Add(this.drawBox);
+            this.Controls.Add(this.toolBar);
+            this.DoubleBuffered = true;
             this.Name = "MainForm";
             this.Text = "Tetris - by Nils";
-            this.Panel.ResumeLayout(false);
-            this.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.drawBox)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel Panel;
-        private System.Windows.Forms.PictureBox drawBox;
-        private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.ToolStrip toolBar;
+        private System.Windows.Forms.ToolStripButton barBtnStart;
+        private System.Windows.Forms.Panel drawBox;
     }
 }
 
