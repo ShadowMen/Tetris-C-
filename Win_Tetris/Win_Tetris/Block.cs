@@ -48,17 +48,22 @@ namespace Win_Tetris
 
         public void MoveRight()
         {
-            if(posX < 10 - size) posX++;
+            posX++;
         }
 
         public void MoveLeft()
         {
-            if(posX > 0) posX--;
+            posX--;
         }
 
         public void MoveDown()
         {
             posY++;
+        }
+
+        public void MoveUp()
+        {
+            posY--;
         }
     }
 }
