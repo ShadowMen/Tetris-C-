@@ -28,16 +28,27 @@ namespace Win_Tetris
             if (!isRunnig) return;
         }
 
-        public void handleInput()
+        public void handleInput(System.Windows.Forms.Keys key)
         {
-
+            switch (key)
+            {
+                case System.Windows.Forms.Keys.Left:
+                    grid.FlyingBlock.MoveLeft();
+                    break;
+                case System.Windows.Forms.Keys.Right:
+                    grid.FlyingBlock.MoveRight();
+                    break;
+                case System.Windows.Forms.Keys.A:
+                    grid.FlyingBlock.TurnLeft();
+                    break;
+            }
         }
 
         public void resize(int width, int height)
         {
             if (width < height)
             {
-                grid.BlockSize = (width - 200) / 10;
+                grid.BlockSize = (width - 100) / 10;
             }
             else
             {
