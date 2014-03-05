@@ -23,6 +23,12 @@ namespace Win_Tetris
             isRunnig = false;
         }
 
+        public void gameOver()
+        {
+            pause();
+            System.Windows.Forms.MessageBox.Show("Game Over!");
+        }
+
         public void update()
         {
             if (!isRunnig) return;
@@ -73,7 +79,15 @@ namespace Win_Tetris
             {
                 grid.FlyingBlock.MoveUp();
                 grid.insertBlock();
+                if (grid.CheckStartBlock()) this.gameOver();
+                grid.CheckFullRows();
             }
+        }
+
+        public void Restart()
+        {
+            grid.Clear();
+            this.run();
         }
     }
 }
