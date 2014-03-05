@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="Collision.cs" />
+    <Compile Include="DrawPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="IBlock.cs" />
     <Compile Include="JBlock.cs" />
     <Compile Include="LBlock.cs" />
