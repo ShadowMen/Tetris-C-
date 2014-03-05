@@ -118,6 +118,9 @@ namespace Win_Tetris
                 }
             }
 
+            //To-Do
+            // - Dies in die Game Klasse verschieben
+            // - nächsten Block am Rand anzeigen lassen
             Random rnd = new Random();
             switch (rnd.Next(1, 8))
             {
@@ -142,6 +145,74 @@ namespace Win_Tetris
                 case 7:
                     flyingBlock = new IBlock();
                     break;
+            }
+        }
+
+        public bool CheckStartBlock()
+        {
+            for (int y = 0; y < flyingBlock.Size; y++)
+            {
+                for (int x = 0; x < flyingBlock.Size; x++)
+                {
+                    //Ist ein Block auf dem Feld unter einem Block vom Fliegenden Block, so ist eine Kollision vorhanden
+                    if (field[y + flyingBlock.PositionY, x + flyingBlock.PositionX] != 0 && flyingBlock.Blocks[y, x] != 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public int CheckFullRows()
+        {
+            int countRows = 0;
+            int count = 0;
+
+            for (int y = 0; y < 22; y++)
+            {
+                for (int x = 0; x < 10; x++)
+                {
+                    //Ist ein Block im Feld counter erhöhen
+                    if (field[y, x] != 0) count++;
+                }
+
+                //Ist eine volle Reihe vorhanden
+                if (count >= 10)
+                {
+                    countRows++;    //gesamtanzahl der Reihen erhöhen
+
+                    //Reihe leeren
+                    for (int x = 0; x < 10; x++)
+                    {
+                        field[y, x] = 0;
+                    }
+
+                    //Felder von oben nachrücken
+                    for (int i = y; i > 0; i--)
+                    {
+                        for (int x = 0; x < 10; x++)
+                        {
+                            field[i, x] = field[i - 1, x];
+                        }
+                    }
+                }
+
+                count = 0;  //counter zurücksetzen
+            }
+
+            return countRows; //Gesamtanzahl der vollen Reihen zurückgeben. (Nützlich für Punktesystem)
+        }
+
+        public void Clear()
+        {
+            for (int y = 0; y < 22; y++)
+            {
+                for (int x = 0; x < 10; x++)
+                {
+                    field[y, x] = 0;
+                }
             }
         }
     }
