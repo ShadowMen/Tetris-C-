@@ -12,7 +12,7 @@ namespace Win_Tetris
             base.Blocks = new int[3, 3] {{5, 0, 0},
                                          {5, 5, 0},
                                          {0, 5, 0}};
-            base.PositionX = 0;
+            base.PositionX = 3;
             base.PositionY = 0;
             base.Size = 3;
         }

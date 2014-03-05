@@ -13,7 +13,7 @@ namespace Win_Tetris
                                          {0, 0, 7, 0},
                                          {0, 0, 7, 0},
                                          {0, 0, 7, 0}};
-            base.PositionX = 0;
+            base.PositionX = 3;
             base.PositionY = 0;
             base.Size = 4;
         }
