@@ -71,39 +71,42 @@ namespace Win_Tetris
                 }
             }
 
-            for (int y = 0; y < flyingBlock.Size; y++)
+            if (flyingBlock != null)
             {
-                for (int x = 0; x < flyingBlock.Size; x++)
+                for (int y = 0; y < flyingBlock.Size; y++)
                 {
-                    switch (flyingBlock.Blocks[y, x])
+                    for (int x = 0; x < flyingBlock.Size; x++)
                     {
-                        case 0:
-                            pen.Color = Color.Transparent;
-                            break;
-                        case 1:
-                            pen.Color = Color.Blue;
-                            break;
-                        case 2:
-                            pen.Color = Color.Red;
-                            break;
-                        case 3:
-                            pen.Color = Color.Green;
-                            break;
-                        case 4:
-                            pen.Color = Color.Yellow;
-                            break;
-                        case 5:
-                            pen.Color = Color.Orange;
-                            break;
-                        case 6:
-                            pen.Color = Color.Violet;
-                            break;
-                        case 7:
-                            pen.Color = Color.Gold;
-                            break;
-                    }
+                        switch (flyingBlock.Blocks[y, x])
+                        {
+                            case 0:
+                                pen.Color = Color.Transparent;
+                                break;
+                            case 1:
+                                pen.Color = Color.Blue;
+                                break;
+                            case 2:
+                                pen.Color = Color.Red;
+                                break;
+                            case 3:
+                                pen.Color = Color.Green;
+                                break;
+                            case 4:
+                                pen.Color = Color.Yellow;
+                                break;
+                            case 5:
+                                pen.Color = Color.Orange;
+                                break;
+                            case 6:
+                                pen.Color = Color.Violet;
+                                break;
+                            case 7:
+                                pen.Color = Color.Gold;
+                                break;
+                        }
 
-                    gfx.FillRectangle(pen.Brush, (x + flyingBlock.PositionX) * blockSize + 1, (y + flyingBlock.PositionY) * blockSize + 1, blockSize - 1, blockSize - 1);
+                        gfx.FillRectangle(pen.Brush, (x + flyingBlock.PositionX) * blockSize + 1, (y + flyingBlock.PositionY) * blockSize + 1, blockSize - 1, blockSize - 1);
+                    }
                 }
             }
         }
