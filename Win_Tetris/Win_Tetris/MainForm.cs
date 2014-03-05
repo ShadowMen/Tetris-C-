@@ -36,7 +36,6 @@ namespace Win_Tetris
 
         private void drawBox_Paint(object sender, PaintEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Paint at {0}", DateTime.Now);
             game.draw(e.Graphics);
         }
 
