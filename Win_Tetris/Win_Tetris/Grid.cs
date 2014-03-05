@@ -10,7 +10,7 @@ namespace Win_Tetris
     {
         //Variabeln
         int[,] field = new int[22, 10];
-        Block flyingBlock = new IBlock();
+        Block flyingBlock;
         int blockSize = 10;
 
         //Properties
@@ -116,36 +116,7 @@ namespace Win_Tetris
                 {
                     if (flyingBlock.Blocks[y, x] != 0) field[y + flyingBlock.PositionY, x + flyingBlock.PositionX] = flyingBlock.Blocks[y, x];
                 }
-            }
-
-            //To-Do
-            // - Dies in die Game Klasse verschieben
-            // - nächsten Block am Rand anzeigen lassen
-            Random rnd = new Random();
-            switch (rnd.Next(1, 8))
-            {
-                case 1:
-                    flyingBlock = new TBlock();
-                    break;
-                case 2:
-                    flyingBlock = new LBlock();
-                    break;
-                case 3:
-                    flyingBlock = new JBlock();
-                    break;
-                case 4:
-                    flyingBlock = new SBlock();
-                    break;
-                case 5:
-                    flyingBlock = new ZBlock();
-                    break;
-                case 6:
-                    flyingBlock = new OBlock();
-                    break;
-                case 7:
-                    flyingBlock = new IBlock();
-                    break;
-            }
+            }            
         }
 
         public bool CheckStartBlock()
