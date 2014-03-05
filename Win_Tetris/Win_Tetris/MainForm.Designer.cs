@@ -33,7 +33,9 @@
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.barBtnStart = new System.Windows.Forms.ToolStripButton();
-            this.drawBox = new System.Windows.Forms.Panel();
+            this.barBtnRestart = new System.Windows.Forms.ToolStripButton();
+            //this.drawBox = new System.Windows.Forms.Panel();
+            this.drawBox = new DrawPanel();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +48,8 @@
             // toolBar
             // 
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.barBtnStart});
+            this.barBtnStart,
+            this.barBtnRestart});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(292, 25);
@@ -62,6 +65,16 @@
             this.barBtnStart.Size = new System.Drawing.Size(35, 22);
             this.barBtnStart.Text = "Start";
             this.barBtnStart.Click += new System.EventHandler(this.barBtnStart_Click);
+            // 
+            // barBtnRestart
+            // 
+            this.barBtnRestart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.barBtnRestart.Image = ((System.Drawing.Image)(resources.GetObject("barBtnRestart.Image")));
+            this.barBtnRestart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.barBtnRestart.Name = "barBtnRestart";
+            this.barBtnRestart.Size = new System.Drawing.Size(47, 22);
+            this.barBtnRestart.Text = "Restart";
+            this.barBtnRestart.Click += new System.EventHandler(this.barBtnRestart_Click);
             // 
             // drawBox
             // 
@@ -97,6 +110,7 @@
         private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.ToolStripButton barBtnStart;
         private System.Windows.Forms.Panel drawBox;
+        private System.Windows.Forms.ToolStripButton barBtnRestart;
     }
 }
 
