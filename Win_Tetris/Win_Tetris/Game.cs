@@ -37,7 +37,13 @@ namespace Win_Tetris
         public void update()
         {
             if (!isRunnig) return;
-            tryGoDown();
+            if (!tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
+            {
+                grid.insertBlock();
+                this.changeBlock();
+                if (grid.CheckStartBlock()) this.gameOver();
+                grid.CheckFullRows();
+            }
         }
 
         public void handleInput(System.Windows.Forms.Keys key)
@@ -119,17 +125,15 @@ namespace Win_Tetris
             }
         }
 
-        public void tryGoDown()
+        public bool tryGoDown()
         {
             grid.FlyingBlock.MoveDown();
             if (Collision.isCollision(grid.FlyingBlock, grid.Field))
             {
                 grid.FlyingBlock.MoveUp();
-                grid.insertBlock();
-                this.changeBlock();
-                if (grid.CheckStartBlock()) this.gameOver();
-                grid.CheckFullRows();
+                return false;
             }
+            return true;
         }
 
         public void changeBlock()
