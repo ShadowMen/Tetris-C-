@@ -52,7 +52,7 @@ namespace Win_Tetris
                     grid.FlyingBlock.MoveRight();
                     if (Collision.isCollision(grid.FlyingBlock, grid.Field)) grid.FlyingBlock.MoveLeft();
                     break;
-                case System.Windows.Forms.Keys.A:
+                case System.Windows.Forms.Keys.Up:
                     grid.FlyingBlock.TurnLeft();
                     if (Collision.isCollision(grid.FlyingBlock, grid.Field)) grid.FlyingBlock.TurnRight();
                     break;
