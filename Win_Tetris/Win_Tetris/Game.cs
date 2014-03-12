@@ -17,27 +17,29 @@ namespace Win_Tetris
         //Methoden
         public void run()
         {
-            isRunnig = true;
+            this.isRunnig = true;
 
-            newNextBlock();
-            changeBlock();
+            this.newNextBlock();
+            this.changeBlock();
         }
 
         public void pause()
         {
-            isRunnig = false;
+            this.isRunnig = false;
         }
 
         public void gameOver()
         {
-            pause();
+            this.pause();
+            //To-Do
+            // * Die MessageBox entfernen
             System.Windows.Forms.MessageBox.Show("Game Over!");
         }
 
         public void update()
         {
-            if (!isRunnig) return;
-            if (!tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
+            if (!this.isRunnig) return;
+            if (!this.tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
             {
                 grid.insertBlock();
                 this.changeBlock();
@@ -139,7 +141,7 @@ namespace Win_Tetris
         public void changeBlock()
         {
             grid.FlyingBlock = nextBlock;
-            newNextBlock();
+            this.newNextBlock();
         }
 
         public void newNextBlock()
