@@ -64,6 +64,7 @@ namespace Win_Tetris
 
         public void handleInput(System.Windows.Forms.Keys key)
         {
+            if (grid.FlyingBlock == null) return;
             switch (key)
             {
                 case System.Windows.Forms.Keys.Left:
