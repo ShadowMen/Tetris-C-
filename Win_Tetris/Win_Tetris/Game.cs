@@ -13,6 +13,8 @@ namespace Win_Tetris
         Grid grid = new Grid();
         Block nextBlock;
         bool isRunnig = false;
+        int FallDownTimer = 0;
+        bool fastDown = false;
 
         //Methoden
         public void run()
@@ -39,13 +41,25 @@ namespace Win_Tetris
         public void update()
         {
             if (!this.isRunnig) return;
-            if (!this.tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
+
+            if (this.FallDownTimer <= 0)
             {
-                grid.insertBlock();
-                this.changeBlock();
-                if (grid.CheckStartBlock()) this.gameOver();
-                grid.CheckFullRows();
+                if (!this.tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
+                {
+                    grid.insertBlock();
+                    this.changeBlock();
+                    if (grid.CheckStartBlock()) this.gameOver();
+                    grid.CheckFullRows();
+                }
+
+                this.FallDownTimer = 20;
             }
+            else if (this.fastDown)
+            {
+                this.FallDownTimer -= 3;
+                this.fastDown = false;
+            }
+            else this.FallDownTimer--;
         }
 
         public void handleInput(System.Windows.Forms.Keys key)
@@ -63,6 +77,12 @@ namespace Win_Tetris
                 case System.Windows.Forms.Keys.Up:
                     grid.FlyingBlock.TurnLeft();
                     if (Collision.isCollision(grid.FlyingBlock, grid.Field)) grid.FlyingBlock.TurnRight();
+                    break;
+                case System.Windows.Forms.Keys.Down:
+                    this.fastDown = true;
+                    break;
+                case System.Windows.Forms.Keys.Space:
+                    this.HardDrop();
                     break;
             }
         }
@@ -176,6 +196,14 @@ namespace Win_Tetris
         {
             grid.Clear();
             this.run();
+        }
+
+        private void HardDrop()
+        {
+            while (this.tryGoDown()) { } //Gehe solange nach unte, bis der Boden oder ein erreicht ist
+
+            grid.insertBlock();
+            this.changeBlock();
         }
     }
 }
