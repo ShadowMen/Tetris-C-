@@ -46,17 +46,14 @@ namespace Win_Tetris
             {
                 if (!this.tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
                 {
-                    grid.insertBlock();
-                    this.changeBlock();
-                    if (grid.CheckStartBlock()) this.gameOver();
-                    grid.CheckFullRows();
+                    this.BlockEnd();
                 }
 
                 this.FallDownTimer = 20;
             }
             else if (this.fastDown)
             {
-                this.FallDownTimer -= 3;
+                this.FallDownTimer = 0;
                 this.fastDown = false;
             }
             else this.FallDownTimer--;
@@ -199,12 +196,19 @@ namespace Win_Tetris
             this.run();
         }
 
+        private void BlockEnd()
+        {
+            grid.insertBlock();
+            this.changeBlock();
+            if (grid.CheckStartBlock()) this.gameOver();
+            grid.CheckFullRows();
+        }
+
         private void HardDrop()
         {
             while (this.tryGoDown()) { } //Gehe solange nach unte, bis der Boden oder ein erreicht ist
 
-            grid.insertBlock();
-            this.changeBlock();
+            this.BlockEnd();
         }
     }
 }
