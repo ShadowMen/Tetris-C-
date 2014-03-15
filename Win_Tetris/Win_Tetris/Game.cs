@@ -12,6 +12,7 @@ namespace Win_Tetris
         Random rnd = new Random();
         Grid grid = new Grid();
         Block nextBlock;
+        ScoreBoard scoreBoard = new ScoreBoard();
         bool isRunnig = false;
         int FallDownTimer = 0;
         bool fastDown = false;
@@ -42,9 +43,13 @@ namespace Win_Tetris
         {
             if (!this.isRunnig) return;
 
+            //Level setzen
+            scoreBoard.Level = (int)(scoreBoard.Lines / 10);
+
+            //Block fallen lassen
             if (this.FallDownTimer <= 0)
             {
-                if (!this.tryGoDown()) //Wenn der Block ein hinderniss erreicht hat
+                if (!this.tryGoDown()) //Wenn der Block ein Hinderniss erreicht hat
                 {
                     this.BlockEnd();
                 }
@@ -54,6 +59,7 @@ namespace Win_Tetris
             else if (this.fastDown)
             {
                 this.FallDownTimer = 0;
+                scoreBoard.Score++;
                 this.fastDown = false;
             }
             else this.FallDownTimer--;
@@ -95,12 +101,17 @@ namespace Win_Tetris
             {
                 grid.BlockSize = height / 22;
             }
+
+            scoreBoard.Size = grid.BlockSize * 3;
+            scoreBoard.PosX = (width - scoreBoard.Size) / 2;
+            scoreBoard.PosY = (height - scoreBoard.Size) / 2;
         }
 
         public void draw(Graphics gfx)
         {
             gfx.Clear(Color.Gray);
             grid.draw(gfx);
+            scoreBoard.draw(gfx);
 
             Pen pen = new Pen(Color.Transparent);
 
@@ -192,22 +203,49 @@ namespace Win_Tetris
 
         public void Restart()
         {
+            scoreBoard.Score = 0;
             grid.Clear();
             this.run();
         }
 
         private void BlockEnd()
         {
+            int lines = 0;
+            int scorePerLine = 0;
+
             grid.insertBlock();
             this.changeBlock();
             if (grid.CheckStartBlock()) this.gameOver();
-            grid.CheckFullRows();
+            
+            lines = grid.CheckFullRows();
+            if (lines > 0)
+            {
+                scoreBoard.Lines += lines;
+                switch (lines)
+                {
+                    case 1:
+                        scorePerLine = 40;
+                        break;
+                    case 2:
+                        scorePerLine = 100;
+                        break;
+                    case 3:
+                        scorePerLine = 300;
+                        break;
+                    case 4:
+                        scorePerLine = 1200;
+                        break;
+                }
+                scoreBoard.Score += lines * scorePerLine * (scoreBoard.Level + 1);
+            }
         }
 
         private void HardDrop()
         {
-            while (this.tryGoDown()) { } //Gehe solange nach unte, bis der Boden oder ein erreicht ist
+            int count = 0;
+            while (this.tryGoDown()) { count++; } //Gehe solange nach unte, bis der Boden oder ein erreicht ist
 
+            scoreBoard.Score += count * 2;
             this.BlockEnd();
         }
     }
