@@ -67,6 +67,7 @@ namespace Win_Tetris
 
         public void handleInput(System.Windows.Forms.Keys key)
         {
+            if (!this.isRunnig) return;
             if (grid.FlyingBlock == null) return;
             switch (key)
             {
