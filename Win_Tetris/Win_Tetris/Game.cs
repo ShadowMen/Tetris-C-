@@ -54,7 +54,7 @@ namespace Win_Tetris
                     this.BlockEnd();
                 }
 
-                this.FallDownTimer = 20;
+                this.FallDownTimer = 50 / (scoreBoard.Level + 1);
             }
             else if (this.fastDown)
             {
@@ -205,6 +205,8 @@ namespace Win_Tetris
         public void Restart()
         {
             scoreBoard.Score = 0;
+            scoreBoard.Level = 0;
+            scoreBoard.Lines = 0;
             grid.Clear();
             this.run();
         }
