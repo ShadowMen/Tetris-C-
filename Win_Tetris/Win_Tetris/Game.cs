@@ -103,9 +103,9 @@ namespace Win_Tetris
                 grid.BlockSize = height / 22;
             }
 
-            scoreBoard.Size = grid.BlockSize * 3;
-            scoreBoard.PosX = (width - scoreBoard.Size) / 2;
-            scoreBoard.PosY = (height - scoreBoard.Size) / 2;
+            scoreBoard.Size = grid.BlockSize;
+            scoreBoard.PosX = grid.BlockSize * 11;
+            scoreBoard.PosY = (height - scoreBoard.Size * 2) / 2;
         }
 
         public void draw(Graphics gfx)
