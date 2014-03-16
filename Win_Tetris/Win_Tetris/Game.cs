@@ -17,13 +17,25 @@ namespace Win_Tetris
         int FallDownTimer = 0;
         bool fastDown = false;
 
+        //Properties
+        public bool IsRunning
+        {
+            get { return this.isRunnig; }
+            set { this.isRunnig = value; }
+        }
+
         //Methoden
         public void run()
         {
+            if (this.isRunnig) return;
+
             this.isRunnig = true;
 
-            this.newNextBlock();
-            this.changeBlock();
+            if (nextBlock == null)
+            {
+                this.newNextBlock();
+                this.changeBlock();
+            }
         }
 
         public void pause()

@@ -41,7 +41,16 @@ namespace Win_Tetris
 
         private void barBtnStart_Click(object sender, EventArgs e)
         {
-            game.run();
+            if (!game.IsRunning)
+            {
+                game.run();
+                barBtnStart.Text = "Pause";
+            }
+            else
+            {
+                game.pause();
+                barBtnStart.Text = "Start";
+            }
         }
 
         private void barBtnRestart_Click(object sender, EventArgs e)
