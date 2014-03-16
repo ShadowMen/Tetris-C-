@@ -96,7 +96,7 @@ namespace Win_Tetris
         {
             if (width < height)
             {
-                grid.BlockSize = (width - 100) / 10;
+                grid.BlockSize = (width / 2) / 10;
             }
             else
             {
@@ -105,7 +105,7 @@ namespace Win_Tetris
 
             scoreBoard.Size = grid.BlockSize;
             scoreBoard.PosX = grid.BlockSize * 11;
-            scoreBoard.PosY = (height - scoreBoard.Size * 2) / 2;
+            scoreBoard.PosY = ((grid.BlockSize * 22) - scoreBoard.Size * 2) / 2;
         }
 
         public void draw(Graphics gfx)
