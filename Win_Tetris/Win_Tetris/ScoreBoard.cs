@@ -12,8 +12,8 @@ namespace Win_Tetris
         long score = 0;
         int level = 0;
         int lines = 0;
-        int posX = 0, posY = 0;
-        int size = 16;
+        int posX = 100, posY = 100;
+        int size = 10;
 
         //Properties
         public long Score
