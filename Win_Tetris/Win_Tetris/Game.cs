@@ -21,7 +21,6 @@ namespace Win_Tetris
         public bool IsRunning
         {
             get { return this.isRunnig; }
-            set { this.isRunnig = value; }
         }
 
         //Methoden
@@ -31,7 +30,7 @@ namespace Win_Tetris
 
             this.isRunnig = true;
 
-            if (nextBlock == null)
+            if (this.nextBlock == null || grid.FlyingBlock == null)
             {
                 this.newNextBlock();
                 this.changeBlock();
@@ -220,7 +219,9 @@ namespace Win_Tetris
             scoreBoard.Level = 0;
             scoreBoard.Lines = 0;
             grid.Clear();
-            this.run();
+            this.newNextBlock();
+            this.changeBlock();
+            this.pause();
         }
 
         private void BlockEnd()

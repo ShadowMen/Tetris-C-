@@ -56,6 +56,7 @@ namespace Win_Tetris
         private void barBtnRestart_Click(object sender, EventArgs e)
         {
             game.Restart();
+            barBtnStart.Text = "Start";
         }
     }
 }
