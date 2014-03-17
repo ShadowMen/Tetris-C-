@@ -58,7 +58,7 @@ namespace Win_Tetris
             Font font = new Font("Arial", size);
             Pen pen = new Pen(Color.Black);
 
-            string text = string.Format("Score: {0}\nLevel: {1}", this.score, this.level);
+            string text = string.Format("Score: {0}\nLevel: {1}\nLines: {2}", this.score, this.level, this.lines);
             gfx.DrawString(text, font, pen.Brush, posX, posY);
         }
     }
